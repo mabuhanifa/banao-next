@@ -3,7 +3,7 @@ import whole from '../public/whole.svg';
 export default function Nav() {
   return (
     <nav>
-      <div className="d-flex justify-content-around p-3 bg-primary">
+      <div className="flex justify-around bg-slate-600">
         <div>
             <img src={whole} alt="icon" />
         </div>
