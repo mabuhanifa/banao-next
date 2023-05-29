@@ -1,8 +1,9 @@
+import Nav from "@/components/Nav";
 
 export default function Home() {
   return (
- <main>
-<button className="btn btn-primary">hi</button>
- </main>
-  )
+    <main>
+      <Nav />
+    </main>
+  );
 }
