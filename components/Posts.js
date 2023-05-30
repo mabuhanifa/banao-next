@@ -1,6 +1,7 @@
 import { AiFillLike, AiOutlineInfoCircle } from "react-icons/ai";
 import { HiPencil } from "react-icons/hi";
 import { MdOutlineLocationOn } from "react-icons/md";
+import Topics from "./Topics";
 
 export default function Posts() {
   return (
@@ -33,7 +34,15 @@ export default function Posts() {
         <p>RECOMMENDED GROUPS</p>
       </div>
       <div className="flex flex-col mt-8">
-        
+        <Topics/>
+        <Topics/>
+        <Topics/>
+        <Topics/>
+      </div>
+      <div>
+        <div className="flex justify-end mt-10">
+            <button className="text-[#2F6CE5] text-[12px]">See More...</button>
+        </div>
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
 import Image from "next/image";
+import leisure from "../public/leisure.png";
 
 export default function Topics() {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between my-3">
       <div className="flex items-center gap-x-2">
         <Image
           src={leisure}
