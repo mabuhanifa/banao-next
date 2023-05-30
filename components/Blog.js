@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { BsThreeDots } from "react-icons/bs";
+import { GiShare } from "react-icons/gi";
+import { IoEyeOutline } from "react-icons/io5";
 import { TfiPencilAlt } from "react-icons/tfi";
 import jungle from "../public/jungle.png";
 import user from "../public/user.png";
@@ -25,12 +27,20 @@ export default function Blog() {
           I’ve worked in UX for the better part of a decade. From now on, I plan
           to rei…
         </p>
-        <div className="flex justify-between pt-8">
+        <div className="flex justify-between pt-8 items-center">
           <div className="flex gap-x-2 items-center">
-            <Image src={user} />
+            <Image src={user} alt="user" />
             <p className="text-[18px] font-[600]">Sarthak Kamra</p>
           </div>
-          <div></div>
+          <div className="flex gap-x-10 items-center">
+            <div className="flex items-center gap-x-2 text-[14px]">
+              <IoEyeOutline size={16}/>
+              <p>1.4k views</p>
+            </div>
+            <button className="bg-[#EDEEF0] p-3 rounded-sm">
+            <GiShare/>
+            </button>
+          </div>
         </div>
       </div>
     </div>
