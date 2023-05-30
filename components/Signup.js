@@ -72,7 +72,9 @@ export default function Signup() {
               <button className="w-[150px] bg-[#2F6CE5] py-3 rounded-full text-white md:w-[320px]  text-[14px]">
                 Create Account
               </button>
-              <button className="border-b border-[#495057] text-[#495057] font-[500] md:hidden">or, Sign In</button>
+              <button className="border-b border-[#495057] text-[#495057] font-[500] md:hidden">
+                or, Sign In
+              </button>
             </div>
             <div className="mt-5">
               <div>
@@ -95,6 +97,9 @@ export default function Signup() {
                 </button>
               </div>
             </div>
+            <p className="md:hidden text-[11px] text-black/[0.5] mt-8">
+              By signing up, you agree to our Terms & <br /> conditions, Privacy policy
+            </p>
           </div>
           <div className="hidden md:block">
             <Image src={signin} alt="signin" height={320} width={320} />
@@ -105,5 +110,5 @@ export default function Signup() {
         </div>
       </div>
     </div>
-  )
+  );
 }

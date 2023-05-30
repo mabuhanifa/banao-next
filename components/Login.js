@@ -17,7 +17,7 @@ export default function Login() {
         </div>
 
         <div className="my-6 px-[36px] flex justify-around md:justify-between items-center text-[14px] ">
-          <h2 className="text-[24px] font-[700]">Create Account</h2>
+          <h2 className="text-[24px] font-[700]">Welcome Back!</h2>
           <h4 className="hidden md:flex items-center gap-x-1 ">
             <span>Already have an account? </span>
             <button className="text-[#2F6CE5] font-[600]">Sign In</button>
@@ -32,23 +32,11 @@ export default function Login() {
         <div className="px-[36px] flex justify-center md:justify-between">
           <div>
             <form>
-              <div className="w-[320px] flex">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  className="bg-[#F7F8FA] px-3 py-[11px] border rounded w-[160px] placeholder-[#8A8A8A] font-[500]"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  className="bg-[#F7F8FA] px-3 py-[11px] border rounded w-[160px] placeholder-[#8A8A8A] font-[500]"
-                />
-              </div>
               <div>
                 <input
                   type="text"
                   placeholder="Email"
-                  className="bg-[#F7F8FA] px-3 py-[11px] border-l border-r w-[320px] placeholder-[#8A8A8A] font-[500]"
+                  className="bg-[#F7F8FA] px-3 py-[11px] border-l border-t border-r w-[320px] placeholder-[#8A8A8A] font-[500]"
                 />
               </div>
               <div className="relative">
@@ -61,19 +49,12 @@ export default function Login() {
                   <IoEyeOutline className="text-black/[.5]" size={20} />
                 </span>
               </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Confirm Password"
-                  className="bg-[#F7F8FA] px-3 py-[11px] border-l border-r border-b rounded w-[320px] placeholder-[#8A8A8A] font-[500]"
-                />
-              </div>
             </form>
             <div className="flex items-center justify-between mt-[19px]">
               <button className="w-[150px] bg-[#2F6CE5] py-3 rounded-full text-white md:w-[320px]  text-[14px]">
                 Create Account
               </button>
-              <button className="border-b border-[#495057] text-[#495057] font-[500] md:hidden">or, Sign In</button>
+              <button className="border-b border-[#495057] text-[#495057] font-[500] md:hidden">or, Create Account</button>
             </div>
             <div className="mt-5">
               <div>
