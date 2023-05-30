@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { IoMdClose } from "react-icons/io";
 import { IoEyeOutline } from "react-icons/io5";
@@ -21,7 +22,7 @@ export default function Login() {
           <h4 className="hidden md:flex items-center gap-x-1 ">
             <span> Don’t have an account yet? </span>
             <button className="text-[#2F6CE5] font-[600]">
-              Create new for free!
+              <Link href={'signup'}>Create new for free!</Link>
             </button>
           </h4>
           <button className="md:hidden h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center">

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { IoMdClose } from "react-icons/io";
 import { IoEyeOutline } from "react-icons/io5";
@@ -19,7 +20,9 @@ export default function Signup() {
           <h2 className="text-[24px] font-[700]">Create Account</h2>
           <h4 className="hidden md:flex items-center gap-x-1 ">
             <span>Already have an account? </span>
-            <button className="text-[#2F6CE5] font-[600]">Sign In</button>
+            <button className="text-[#2F6CE5] font-[600]">
+              <Link href={"login"}>Sign In</Link>
+            </button>
           </h4>
           <button className="md:hidden h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center">
             <span>
@@ -98,7 +101,8 @@ export default function Signup() {
               </div>
             </div>
             <p className="md:hidden text-[11px] text-black/[0.5] mt-8">
-              By signing up, you agree to our Terms & <br /> conditions, Privacy policy
+              By signing up, you agree to our Terms & <br /> conditions, Privacy
+              policy
             </p>
           </div>
           <div className="hidden md:block">
