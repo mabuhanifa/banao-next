@@ -6,9 +6,19 @@ import { IoEyeOutline } from "react-icons/io5";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import signin from "../public/signin.png";
 
-export default function Login() {
+export default function Login({ view, setModal }) {
+  if (!view) return null;
+  const closeModal = (e) => {
+    if (e.target.id === "container") {
+      setModal((m) => !m);
+    }
+  };
   return (
-    <div className="bg-gray-400 flex justify-center md:p-52 ">
+    <div
+      onClick={closeModal}
+      id="container"
+      className="bg-gray-400 flex justify-center md:p-52 bg-opacity-30 backdrop-blur-sm fixed inset-0 top-40"
+    >
       <div className="w-[736px] h-[530px] bg-white rounded-[8px]">
         <div className="hidden md:flex justify-center bg-[#EFFFF4] py-[17px] px-0 rounded-[8px]">
           <p className="text-[14px] text-[#008A45] font-[500]">
@@ -22,10 +32,13 @@ export default function Login() {
           <h4 className="hidden md:flex items-center gap-x-1 ">
             <span> Don’t have an account yet? </span>
             <button className="text-[#2F6CE5] font-[600]">
-              <Link href={'signup'}>Create new for free!</Link>
+              <Link href={"signup"}>Create new for free!</Link>
             </button>
           </h4>
-          <button className="md:hidden h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center">
+          <button
+            className="md:hidden h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center"
+            onClick={()=>setModal(false)}
+          >
             <span>
               <IoMdClose />
             </span>

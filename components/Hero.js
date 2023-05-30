@@ -1,14 +1,22 @@
+import { useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import { HiOutlinePencil } from "react-icons/hi";
+import Login from "./Login";
 
 export default function Hero() {
+  const [modal, setModal] = useState(false);
   return (
     <div className="h-[440px] bg-gr">
       <div className="md:hidden flex justify-between items-center pl-4 pr-4 pt-4 text-white">
         <button>
           <FiArrowLeft size={20} />
         </button>
-        <button className="border border-white p-2 rounded">Join Group</button>
+        <button
+          className="border border-white p-2 rounded"
+          onClick={() => setModal(true)}
+        >
+          Join Group
+        </button>
       </div>
       <h1 className="pl-4 text-white text-[36px] font-[700] md:pl-[200px] pt-72">
         Computer Engineering
@@ -21,6 +29,8 @@ export default function Hero() {
           <HiOutlinePencil size={20} />
         </button>
       </div>
+
+      <Login view={modal} setModal={setModal} />
     </div>
   );
 }
