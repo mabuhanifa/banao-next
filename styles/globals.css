@@ -8,3 +8,7 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6)),
     url("../public/bg.png");
 }
+
+.nav-list > li {
+  padding: 15px 0px;
+}
