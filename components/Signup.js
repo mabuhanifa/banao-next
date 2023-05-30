@@ -4,8 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import { IoEyeOutline } from "react-icons/io5";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import signin from "../public/signin.png";
-
-export default function Login() {
+export default function Signup() {
   return (
     <div className="bg-gray-400 flex justify-center md:p-52 ">
       <div className="w-[736px] h-[530px] bg-white rounded-[8px]">
@@ -106,5 +105,5 @@ export default function Login() {
         </div>
       </div>
     </div>
-  );
+  )
 }
