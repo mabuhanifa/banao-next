@@ -23,7 +23,7 @@ export default function Blog() {
             <BsThreeDots size={20} />
           </button>
         </div>
-        <p className="text-[#5C5C5C] text-[19px]">
+        <p className="text-[#5C5C5C] text-sm md:text-[19px]">
           I’ve worked in UX for the better part of a decade. From now on, I plan
           to rei…
         </p>

@@ -1,4 +1,5 @@
-import { AiFillCaretDown, AiOutlineUsergroupAdd } from "react-icons/ai";
+import { AiFillCaretDown } from "react-icons/ai";
+import { RiLoginBoxLine } from "react-icons/ri";
 import Blog from "./Blog";
 import Posts from "./Posts";
 
@@ -21,9 +22,13 @@ export default function Blogs() {
               <AiFillCaretDown size={20} />
             </span>
           </button>
-          <button className="flex items-center gap-x-2 font-[500] bg-[#2F6CE5] py-2 text-white rounded px-3">
+          {/* <button className="flex items-center gap-x-2 font-[500] bg-[#2F6CE5] py-2 text-white rounded px-3">
             <AiOutlineUsergroupAdd size={20} />
             <p>Join Group</p>
+          </button> */}
+          <button className="flex items-center border gap-x-2 font-[500]  px-3 py-2 rounded text-gray-500">
+            <RiLoginBoxLine size={20} />
+            <p>Leave Group</p>
           </button>
         </div>
       </nav>
