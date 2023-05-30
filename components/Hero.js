@@ -1,11 +1,12 @@
 import { FiArrowLeft } from "react-icons/fi";
+import { HiOutlinePencil } from "react-icons/hi";
 
 export default function Hero() {
   return (
     <div className="h-[440px] bg-gr">
       <div className="md:hidden flex justify-between items-center pl-4 pr-4 pt-4 text-white">
         <button>
-          <FiArrowLeft size={20}/>
+          <FiArrowLeft size={20} />
         </button>
         <button className="border border-white p-2 rounded">Join Group</button>
       </div>
@@ -15,6 +16,11 @@ export default function Hero() {
       <p className="pl-4 text-white md:pl-[200px] ">
         142,765 Computer Engineers follow this
       </p>
+      <div className="md:hidden">
+        <button className="bg-gradient-to-r from-[#FF5C5C] to-[#F0568A]  fixed bottom-10 right-5 text-white h-[54px] w-[54px] flex justify-center items-center rounded-full">
+          <HiOutlinePencil size={20} />
+        </button>
+      </div>
     </div>
   );
 }
