@@ -19,8 +19,10 @@ export default function Login() {
         <div className="my-6 px-[36px] flex justify-around md:justify-between items-center text-[14px] ">
           <h2 className="text-[24px] font-[700]">Welcome Back!</h2>
           <h4 className="hidden md:flex items-center gap-x-1 ">
-            <span>Already have an account? </span>
-            <button className="text-[#2F6CE5] font-[600]">Sign In</button>
+            <span> Don’t have an account yet? </span>
+            <button className="text-[#2F6CE5] font-[600]">
+              Create new for free!
+            </button>
           </h4>
           <button className="md:hidden h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center">
             <span>
@@ -54,7 +56,9 @@ export default function Login() {
               <button className="w-[150px] bg-[#2F6CE5] py-3 rounded-full text-white md:w-[320px]  text-[14px]">
                 Create Account
               </button>
-              <button className="border-b border-[#495057] text-[#495057] font-[500] md:hidden">or, Create Account</button>
+              <button className="border-b border-[#495057] text-[#495057] font-[500] md:hidden">
+                or, Create Account
+              </button>
             </div>
             <div className="mt-5">
               <div>
@@ -75,6 +79,9 @@ export default function Login() {
                   </span>
                   <span>Sign up with Google</span>
                 </button>
+              </div>
+              <div className=" flex justify-center mt-8 text-[#212529] font-[500]">
+                <button>Forgot Password?</button>
               </div>
             </div>
           </div>
