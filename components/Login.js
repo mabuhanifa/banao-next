@@ -1,5 +1,7 @@
+import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
 import { RiFacebookCircleFill } from "react-icons/ri";
+import signin from "../public/signin.png";
 
 export default function Login() {
   return (
@@ -20,64 +22,75 @@ export default function Login() {
           </h4>
         </div>
 
-        <div className="px-[36px]">
-          <form>
-            <div className="w-[320px] flex">
-              <input
-                type="text"
-                placeholder="First Name"
-                className="bg-[#F7F8FA] px-3 py-[11px] border rounded w-[160px] placeholder-[#8A8A8A] font-[500]"
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                className="bg-[#F7F8FA] px-3 py-[11px] border rounded w-[160px] placeholder-[#8A8A8A] font-[500]"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                placeholder="Email"
-                className="bg-[#F7F8FA] px-3 py-[11px] border-l border-r w-[320px] placeholder-[#8A8A8A] font-[500]"
-              />
-            </div>
-            <div>
-              <input
-                type="number"
-                placeholder="Password"
-                className="bg-[#F7F8FA] px-3 py-[11px] border w-[320px] placeholder-[#8A8A8A] font-[500]"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                placeholder="Confirm Password"
-                className="bg-[#F7F8FA] px-3 py-[11px] border-l border-r border-b rounded w-[320px] placeholder-[#8A8A8A] font-[500]"
-              />
-            </div>
-            <input
-              type="button"
-              value="Create Account"
-              className="bg-[#2F6CE5] py-3 rounded-full text-white w-[320px] mt-[19px] text-[14px]"
-            />
-          </form>
-        </div>
-        <div className="px-[36px] mt-2">
+        <div className="px-[36px] flex">
           <div>
-            <button className="flex items-center gap-x-2 py-[11px] border rounded w-[320px] justify-center my-2 text-[14px]">
-              <span>
-                <RiFacebookCircleFill className="text-[#2F6CE5]" size={20}/>
-              </span>
-              <span>Sign up with Facebook</span>
-            </button>
+            <form>
+              <div className="w-[320px] flex">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  className="bg-[#F7F8FA] px-3 py-[11px] border rounded w-[160px] placeholder-[#8A8A8A] font-[500]"
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  className="bg-[#F7F8FA] px-3 py-[11px] border rounded w-[160px] placeholder-[#8A8A8A] font-[500]"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Email"
+                  className="bg-[#F7F8FA] px-3 py-[11px] border-l border-r w-[320px] placeholder-[#8A8A8A] font-[500]"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  placeholder="Password"
+                  className="bg-[#F7F8FA] px-3 py-[11px] border w-[320px] placeholder-[#8A8A8A] font-[500]"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Confirm Password"
+                  className="bg-[#F7F8FA] px-3 py-[11px] border-l border-r border-b rounded w-[320px] placeholder-[#8A8A8A] font-[500]"
+                />
+              </div>
+              <input
+                type="button"
+                value="Create Account"
+                className="bg-[#2F6CE5] py-3 rounded-full text-white w-[320px] mt-[19px] text-[14px]"
+              />
+            </form>
+            <div className="mt-5">
+              <div>
+                <button className="flex items-center gap-x-2 py-[11px] border rounded w-[320px] justify-center my-2 text-[14px]">
+                  <span>
+                    <RiFacebookCircleFill
+                      className="text-[#2F6CE5]"
+                      size={20}
+                    />
+                  </span>
+                  <span>Sign up with Facebook</span>
+                </button>
+              </div>
+              <div>
+                <button className="flex items-center gap-x-2 py-[11px] border rounded w-[320px] justify-center my-2 text-[14px]">
+                  <span>
+                    <FcGoogle size={20} />
+                  </span>
+                  <span>Sign up with Google</span>
+                </button>
+              </div>
+            </div>
           </div>
           <div>
-            <button className="flex items-center gap-x-2 py-[11px] border rounded w-[320px] justify-center my-2 text-[14px]">
-              <span>
-                <FcGoogle  size={20}/>
-              </span>
-              <span>Sign up with Google</span>
-            </button>
+            <Image src={signin} alt="signin" height={320} width={320} />
+            <p className="text-[11px] text-black/[0.5] pl-5 mt-8">
+              By signing up, you agree to our Terms & conditions, Privacy policy
+            </p>
           </div>
         </div>
       </div>
