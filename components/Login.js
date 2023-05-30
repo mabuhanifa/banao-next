@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { AiOutlineClose } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { IoMdClose } from "react-icons/io";
 import { IoEyeOutline } from "react-icons/io5";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import signin from "../public/signin.png";
@@ -22,9 +22,9 @@ export default function Login() {
             <span>Already have an account? </span>
             <button className="text-[#2F6CE5] font-[600]">Sign In</button>
           </h4>
-          <button className="h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center">
+          <button className="md:hidden h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center">
             <span>
-              <AiOutlineClose />
+              <IoMdClose />
             </span>
           </button>
         </div>
@@ -68,17 +68,12 @@ export default function Login() {
                   className="bg-[#F7F8FA] px-3 py-[11px] border-l border-r border-b rounded w-[320px] placeholder-[#8A8A8A] font-[500]"
                 />
               </div>
-              {/* <input
-                type="button"
-                value="Create Account"
-                className="bg-[#2F6CE5] py-3 rounded-full text-white w-[320px] mt-[19px] text-[14px]"
-              /> */}
             </form>
             <div className="flex items-center justify-between mt-[19px]">
               <button className="w-[150px] bg-[#2F6CE5] py-3 rounded-full text-white md:w-[320px]  text-[14px]">
                 Create Account
               </button>
-              <button className="border-b border-[#495057] text-[#495057] font-[500]">or, Sign In</button>
+              <button className="border-b border-[#495057] text-[#495057] font-[500] md:hidden">or, Sign In</button>
             </div>
             <div className="mt-5">
               <div>
