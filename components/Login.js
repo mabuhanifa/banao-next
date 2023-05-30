@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
+import { IoEyeOutline } from "react-icons/io5";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import signin from "../public/signin.png";
 
@@ -44,12 +45,15 @@ export default function Login() {
                   className="bg-[#F7F8FA] px-3 py-[11px] border-l border-r w-[320px] placeholder-[#8A8A8A] font-[500]"
                 />
               </div>
-              <div>
+              <div className="relative">
                 <input
-                  type="number"
+                  type="text"
                   placeholder="Password"
                   className="bg-[#F7F8FA] px-3 py-[11px] border w-[320px] placeholder-[#8A8A8A] font-[500]"
                 />
+                <span className="absolute top-[13px] right-8">
+                  <IoEyeOutline className="text-black/[.5]" size={20}/>
+                </span>
               </div>
               <div>
                 <input
