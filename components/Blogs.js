@@ -1,4 +1,6 @@
 import { AiFillCaretDown, AiOutlineUsergroupAdd } from "react-icons/ai";
+import Blog from "./Blog";
+import Posts from "./Posts";
 
 export default function Blogs() {
   return (
@@ -11,19 +13,24 @@ export default function Blogs() {
           <li>Education</li>
           <li>Job</li>
         </ul>
-        <div className="flex gap-x-5">
+        <div className="flex gap-x-5 items-center">
           <button className="flex items-center gap-x-2 font-[500] bg-[#EDEEF0] py-2 rounded px-3">
             <p>Write a Post</p>
             <span>
-              <AiFillCaretDown size={25} />
+              <AiFillCaretDown size={20} />
             </span>
           </button>
           <button className="flex items-center gap-x-2 font-[500] bg-[#2F6CE5] py-2 text-white rounded px-3">
-            <AiOutlineUsergroupAdd size={25} />
+            <AiOutlineUsergroupAdd size={20} />
             <p>Join Group</p>
           </button>
         </div>
       </nav>
+
+      <div className="flex justify-between my-10">
+        <Blog/>
+        <Posts/>
+      </div>
     </div>
   );
 }
