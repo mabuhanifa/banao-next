@@ -1,7 +1,10 @@
+import { FcGoogle } from "react-icons/fc";
+import { RiFacebookCircleFill } from "react-icons/ri";
+
 export default function Login() {
   return (
     <div className="bg-gray-400 flex justify-center p-52 ">
-      <div className="w-[736px] h-[513px] bg-white rounded-[8px]">
+      <div className="w-[736px] h-[550px] bg-white rounded-[8px]">
         <div className="flex justify-center bg-[#EFFFF4] py-[17px] px-0 rounded-[8px]">
           <p className="text-[14px] text-[#008A45] font-[500]">
             Let&apos;s learn, share & inspire each other with our passion for
@@ -49,10 +52,33 @@ export default function Login() {
               <input
                 type="text"
                 placeholder="Confirm Password"
-                className="bg-[#F7F8FA] px-3 py-4 border-l border-r rounded w-[320px] placeholder-[#8A8A8A] font-[500]"
+                className="bg-[#F7F8FA] px-3 py-4 border-l border-r border-b rounded w-[320px] placeholder-[#8A8A8A] font-[500]"
               />
             </div>
+            <input
+              type="button"
+              value="Create Account"
+              className="bg-[#2F6CE5] py-3 rounded-full text-white w-[320px] mt-[19px] text-[14px]"
+            />
           </form>
+        </div>
+        <div className="px-[36px]">
+          <div>
+            <button className="flex items-center gap-x-2 py-[11px] border rounded w-[320px] justify-center my-2 text-[14px]">
+              <span>
+                <RiFacebookCircleFill className="text-[#2F6CE5]" size={20}/>
+              </span>
+              <span>Sign up with Facebook</span>
+            </button>
+          </div>
+          <div>
+            <button className="flex items-center gap-x-2 py-[11px] border rounded w-[320px] justify-center my-2 text-[14px]">
+              <span>
+                <FcGoogle  size={20}/>
+              </span>
+              <span>Sign up with Google</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
