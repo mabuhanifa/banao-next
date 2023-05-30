@@ -1,12 +1,13 @@
-import Login from "@/components/Login";
+import Blogs from "@/components/Blogs";
+import Hero from "@/components/Hero";
+import Nav from "@/components/Nav";
 
 export default function Home() {
   return (
     <main>
-      {/* <Nav />
-      <Hero/>
-      <Blogs/> */}
-      <Login/>
+      <Nav />
+      <Hero />
+      <Blogs />
     </main>
   );
 }

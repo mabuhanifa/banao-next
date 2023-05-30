@@ -5,7 +5,7 @@ import icon from "../public/icon.png";
 
 export default function Nav() {
   return (
-    <nav>
+    <nav className="hidden md:block">
       <div className="flex justify-around p-5 items-center">
         <div>
           <Image src={icon} alt="icon" />

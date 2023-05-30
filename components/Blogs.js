@@ -4,15 +4,16 @@ import Posts from "./Posts";
 
 export default function Blogs() {
   return (
-    <div className="px-[200px] py-10">
-      <nav className="flex justify-between items-center border-b">
-        <ul className="flex gap-x-5 text-[#8A8A8A]  nav-list">
+    <div className="md:px-[200px] py-10">
+      <nav className="hidden md:flex justify-between items-center border-b">
+        <ul className="flex items-center gap-x-5 text-[#8A8A8A]  nav-list">
           <li className="text-black border-b border-black ">All Posts(32)</li>
           <li>Article</li>
           <li>Event</li>
           <li>Education</li>
           <li>Job</li>
         </ul>
+
         <div className="flex gap-x-5 items-center">
           <button className="flex items-center gap-x-2 font-[500] bg-[#EDEEF0] py-2 rounded px-3">
             <p>Write a Post</p>
@@ -25,6 +26,15 @@ export default function Blogs() {
             <p>Join Group</p>
           </button>
         </div>
+      </nav>
+      <nav className="md:hidden flex px-4 justify-between items-center text-[14px] font-[700] ">
+        <p>Posts(368)</p>
+        <p className="flex items-center gap-x-2 py-2 px-2.5 bg-[#F1F3F5] rounded">
+          <span>Filter: All</span>
+          <span>
+            <AiFillCaretDown />
+          </span>
+        </p>
       </nav>
 
       <div className="flex justify-between my-10">
