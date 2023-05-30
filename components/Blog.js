@@ -8,7 +8,7 @@ import user from "../public/user.png";
 
 export default function Blog() {
   return (
-    <div className="border rounded">
+    <div className="border rounded my-2">
       <Image src={jungle} alt="image" />
       <div className="p-4">
         <div className="flex items-center gap-x-2">

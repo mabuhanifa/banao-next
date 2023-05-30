@@ -28,8 +28,11 @@ export default function Blogs() {
       </nav>
 
       <div className="flex justify-between my-10">
-        <Blog/>
-        <Posts/>
+        <div className="flex flex-col">
+          <Blog />
+          <Blog />
+        </div>
+        <Posts />
       </div>
     </div>
   );
