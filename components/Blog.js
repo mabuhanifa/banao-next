@@ -30,15 +30,21 @@ export default function Blog() {
         <div className="flex justify-between pt-8 items-center">
           <div className="flex gap-x-2 items-center">
             <Image src={user} alt="user" />
-            <p className="text-[18px] font-[600]">Sarthak Kamra</p>
+            <div>
+              <p className="text-[18px] font-[600]">Sarthak Kamra</p>
+              <div className="md:hidden flex items-center gap-x-2 text-[14px] text-[#495057] font-[500]">
+                <IoEyeOutline size={16} />
+                <p>1.4k views</p>
+              </div>
+            </div>
           </div>
           <div className="flex gap-x-10 items-center">
-            <div className="flex items-center gap-x-2 text-[14px]">
-              <IoEyeOutline size={16}/>
+            <div className="hidden md:flex items-center gap-x-2 text-[14px]">
+              <IoEyeOutline size={16} />
               <p>1.4k views</p>
             </div>
             <button className="bg-[#EDEEF0] p-3 rounded-sm">
-            <GiShare/>
+              <GiShare />
             </button>
           </div>
         </div>

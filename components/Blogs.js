@@ -27,6 +27,7 @@ export default function Blogs() {
           </button>
         </div>
       </nav>
+
       <nav className="md:hidden flex px-4 justify-between items-center text-[14px] font-[700] ">
         <p>Posts(368)</p>
         <p className="flex items-center gap-x-2 py-2 px-2.5 bg-[#F1F3F5] rounded">
@@ -42,7 +43,10 @@ export default function Blogs() {
           <Blog />
           <Blog />
         </div>
-        <Posts />
+
+        <div className="hidden md:block">
+          <Posts />
+        </div>
       </div>
     </div>
   );
