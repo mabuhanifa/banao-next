@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { IoMdClose } from "react-icons/io";
 import { IoEyeOutline } from "react-icons/io5";
@@ -11,21 +10,28 @@ export default function Login({ view, setLogin, setSignup }) {
   const closeLogin = (e) => {
     if (e.target.id === "container") {
       setLogin((m) => !m);
-      setSignup((m) => !m);
     }
   };
   return (
     <div
       onClick={closeLogin}
       id="container"
-      className="flex justify-center md:p-52 bg-opacity-30 backdrop-blur-sm fixed inset-0 top-40"
+      className="flex justify-center md:p-52 bg-opacity-30 backdrop-blur-sm fixed inset-0 top-40 md:top-0"
     >
       <div className="w-[736px] h-[530px] bg-white rounded-[8px]">
-        <div className="hidden md:flex justify-center bg-[#EFFFF4] py-[17px] px-0 rounded-[8px]">
+        <div className="hidden md:flex justify-center bg-[#EFFFF4] py-[17px] px-0 rounded-[8px] relative">
           <p className="text-[14px] text-[#008A45] font-[500]">
             Let&apos;s learn, share & inspire each other with our passion for
             computer engineering. Sign up now 🤘🏼
           </p>
+          <button
+            className="h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center absolute top-[-35px] right-[-20px]"
+            onClick={() => setLogin(false)}
+          >
+            <span>
+              <IoMdClose />
+            </span>
+          </button>
         </div>
 
         <div className="my-6 px-[36px] flex justify-around md:justify-between items-center text-[14px] ">
@@ -39,7 +45,7 @@ export default function Login({ view, setLogin, setSignup }) {
                 setSignup((m) => !m);
               }}
             >
-              <Link href={"signup"}>Create new for free!</Link>
+              Create new for free!
             </button>
           </h4>
           <button
