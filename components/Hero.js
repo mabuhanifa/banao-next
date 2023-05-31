@@ -32,8 +32,8 @@ export default function Hero() {
         </button>
       </div>
 
-      <Login view={login} setLogin={setLogin} />
-      <Signup view={signup} setLogin={setSignup} />
+      <Login view={login} setLogin={setLogin} setSignup={setSignup} />
+      <Signup view={signup} setSignup={setSignup} setLogin={setLogin}/>
     </div>
   );
 }

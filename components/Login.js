@@ -6,18 +6,19 @@ import { IoEyeOutline } from "react-icons/io5";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import signin from "../public/signin.png";
 
-export default function Login({ view, setLogin }) {
+export default function Login({ view, setLogin, setSignup }) {
   if (!view) return null;
   const closeLogin = (e) => {
     if (e.target.id === "container") {
       setLogin((m) => !m);
+      setSignup((m) => !m);
     }
   };
   return (
     <div
       onClick={closeLogin}
       id="container"
-      className="bg-gray-400 flex justify-center md:p-52 bg-opacity-30 backdrop-blur-sm fixed inset-0 top-40"
+      className="flex justify-center md:p-52 bg-opacity-30 backdrop-blur-sm fixed inset-0 top-40"
     >
       <div className="w-[736px] h-[530px] bg-white rounded-[8px]">
         <div className="hidden md:flex justify-center bg-[#EFFFF4] py-[17px] px-0 rounded-[8px]">
@@ -31,13 +32,19 @@ export default function Login({ view, setLogin }) {
           <h2 className="text-[24px] font-[700]">Welcome Back!</h2>
           <h4 className="hidden md:flex items-center gap-x-1 ">
             <span> Don’t have an account yet? </span>
-            <button className="text-[#2F6CE5] font-[600]">
+            <button
+              className="text-[#2F6CE5] font-[600]"
+              onClick={() => {
+                setLogin(false);
+                setSignup((m) => !m);
+              }}
+            >
               <Link href={"signup"}>Create new for free!</Link>
             </button>
           </h4>
           <button
             className="md:hidden h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center"
-            onClick={()=>setLogin(false)}
+            onClick={() => setLogin(false)}
           >
             <span>
               <IoMdClose />
@@ -68,9 +75,15 @@ export default function Login({ view, setLogin }) {
             </form>
             <div className="flex items-center justify-between mt-[19px]">
               <button className="w-[150px] bg-[#2F6CE5] py-3 rounded-full text-white md:w-[320px]  text-[14px]">
-                Create Account
+                Sign In
               </button>
-              <button className="border-b border-[#495057] text-[#495057] font-[500] md:hidden">
+              <button
+                onClick={() => {
+                  setLogin(false);
+                  setSignup((m) => !m);
+                }}
+                className="border-b border-[#495057] text-[#495057] font-[500] md:hidden"
+              >
                 or, Create Account
               </button>
             </div>

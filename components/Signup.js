@@ -5,7 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import { IoEyeOutline } from "react-icons/io5";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import signin from "../public/signin.png";
-export default function Signup({ view, setSignup }) {
+export default function Signup({ view, setSignup, setLogin }) {
   if (!view) return null;
   const closeSignup = (e) => {
     if (e.target.id === "container") {
@@ -16,7 +16,7 @@ export default function Signup({ view, setSignup }) {
     <div
       onClick={closeSignup}
       id="container"
-      className="bg-gray-400 flex justify-center md:p-52 backdrop-blur-sm fixed inset-0 top-40"
+      className="flex justify-center md:p-52 backdrop-blur-sm fixed inset-0 top-40"
     >
       <div className="w-[736px] h-[530px] bg-white rounded-[8px]">
         <div className="hidden md:flex justify-center bg-[#EFFFF4] py-[17px] px-0 rounded-[8px]">
@@ -30,7 +30,13 @@ export default function Signup({ view, setSignup }) {
           <h2 className="text-[24px] font-[700]">Create Account</h2>
           <h4 className="hidden md:flex items-center gap-x-1 ">
             <span>Already have an account? </span>
-            <button className="text-[#2F6CE5] font-[600]">
+            <button
+              onClick={() => {
+                setLogin(true);
+                setSignup(false);
+              }}
+              className="text-[#2F6CE5] font-[600]"
+            >
               <Link href={"login"}>Sign In</Link>
             </button>
           </h4>
@@ -88,7 +94,13 @@ export default function Signup({ view, setSignup }) {
               <button className="w-[150px] bg-[#2F6CE5] py-3 rounded-full text-white md:w-[320px]  text-[14px]">
                 Create Account
               </button>
-              <button className="border-b border-[#495057] text-[#495057] font-[500] md:hidden">
+              <button
+                onClick={() => {
+                  setLogin(true);
+                  setSignup(false);
+                }}
+                className="border-b border-[#495057] text-[#495057] font-[500] md:hidden"
+              >
                 or, Sign In
               </button>
             </div>
