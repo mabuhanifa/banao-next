@@ -1,10 +1,11 @@
+import { useModal } from "@/contextAPI/context";
 import Image from "next/image";
 import { AiFillCaretDown } from "react-icons/ai";
 import { MdSearch } from "react-icons/md";
 import icon from "../public/icon.png";
-import user from "../public/user.png";
 
 export default function Nav() {
+  const { login, setLogin, signup, setSignup, user, setUser } = useModal();
   return (
     <nav className="hidden md:block">
       <div className="flex justify-around p-5 items-center">
@@ -24,23 +25,31 @@ export default function Nav() {
             />
           </div>
         </div>
-        <div>
-          <p className="flex items-center gap-2 font-[700]">
-            <span>Create account.</span>
-            <span className="text-[#2F6CE5] ">It’s free!</span>
-            <button>
-              <AiFillCaretDown />
+        {!user.name ? (
+          <div>
+            <button
+              className="flex items-center gap-2 font-[700]"
+              onClick={() => {
+                setSignup(true);
+                setLogin(false);
+              }}
+            >
+              <span>Create account.</span>
+              <span className="text-[#2F6CE5] ">It’s free!</span>
+              <button>
+                <AiFillCaretDown />
+              </button>
             </button>
-          </p>
-        </div>
-
-        <div className="flex items-center gap-x-4">
-          <Image src={user} alt="user" width={36} height={36} />
-          <p>Siddharth Goyal</p>
-          <span>
-          <AiFillCaretDown/>
-          </span>
-        </div>
+          </div>
+        ) : (
+          <div className="flex items-center gap-x-4">
+            <Image src={user} alt="user" width={36} height={36} />
+            <p>Siddharth Goyal</p>
+            <span>
+              <AiFillCaretDown />
+            </span>
+          </div>
+        )}
       </div>
     </nav>
   );

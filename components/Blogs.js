@@ -1,12 +1,9 @@
-import { useModal } from "@/contextAPI/context";
 import { AiFillCaretDown, AiOutlineUsergroupAdd } from "react-icons/ai";
 import { RiLoginBoxLine } from "react-icons/ri";
 import Blog from "./Blog";
 import Posts from "./Posts";
 
 export default function Blogs() {
-  const { login, setLogin, signup, setSignup } = useModal();
-
   return (
     <div className="md:px-[200px] py-10">
       <nav className="hidden md:flex justify-between items-center border-b">
