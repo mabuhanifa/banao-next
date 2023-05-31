@@ -1,9 +1,13 @@
+import { useModal } from "@/contextAPI/context";
 import { AiFillCaretDown, AiOutlineUsergroupAdd } from "react-icons/ai";
 import { RiLoginBoxLine } from "react-icons/ri";
 import Blog from "./Blog";
+import Blog2 from "./Blog2";
+import Blog3 from "./Blog3";
 import Posts from "./Posts";
 
 export default function Blogs() {
+  const { setLogin, setSignup, user } = useModal();
   return (
     <div className="md:px-[200px] py-10">
       <nav className="hidden md:flex justify-between items-center border-b">
@@ -22,14 +26,17 @@ export default function Blogs() {
               <AiFillCaretDown size={20} />
             </span>
           </button>
-          <button className="flex items-center gap-x-2 font-[500] bg-[#2F6CE5] py-2 text-white rounded px-3">
-            <AiOutlineUsergroupAdd size={20} />
-            <p>Join Group</p>
-          </button>
-          <button className="flex items-center border gap-x-2 font-[500]  px-3 py-2 rounded text-gray-500">
-            <RiLoginBoxLine size={20} />
-            <p>Leave Group</p>
-          </button>
+          {!user.name ? (
+            <button className="flex items-center gap-x-2 font-[500] bg-[#2F6CE5] py-2 text-white rounded px-3">
+              <AiOutlineUsergroupAdd size={20} />
+              <p>Join Group</p>
+            </button>
+          ) : (
+            <button className="flex items-center border gap-x-2 font-[500]  px-3 py-2 rounded text-gray-500">
+              <RiLoginBoxLine size={20} />
+              <p>Leave Group</p>
+            </button>
+          )}
         </div>
       </nav>
 
@@ -46,7 +53,8 @@ export default function Blogs() {
       <div className="flex justify-between my-10">
         <div className="flex flex-col">
           <Blog />
-          <Blog />
+          <Blog2 />
+          <Blog3 />
         </div>
 
         <div className="hidden md:block">

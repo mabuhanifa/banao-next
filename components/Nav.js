@@ -5,7 +5,7 @@ import { MdSearch } from "react-icons/md";
 import icon from "../public/icon.png";
 
 export default function Nav() {
-  const { setLogin,  setSignup, user,  } = useModal();
+  const { setLogin, setSignup, user } = useModal();
   return (
     <nav className="hidden md:block">
       <div className="flex justify-around p-5 items-center">
@@ -36,9 +36,7 @@ export default function Nav() {
             >
               <span>Create account.</span>
               <span className="text-[#2F6CE5] ">It’s free!</span>
-              <button>
-                <AiFillCaretDown />
-              </button>
+              <AiFillCaretDown />
             </button>
           </div>
         ) : (
