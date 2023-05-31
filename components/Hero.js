@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useModal } from "@/contextAPI/context";
 import { FiArrowLeft } from "react-icons/fi";
 import { HiOutlinePencil } from "react-icons/hi";
 import Login from "./Login";
 import Signup from "./Signup";
 
 export default function Hero() {
-  const [login, setLogin] = useState(false);
-  const [signup, setSignup] = useState(false);
+  const { login, setLogin, signup, setSignup } = useModal();
   return (
     <div className="h-[440px] bg-gr">
       <div className="md:hidden flex justify-between items-center pl-4 pr-4 pt-4 text-white">
@@ -33,7 +32,7 @@ export default function Hero() {
       </div>
 
       <Login view={login} setLogin={setLogin} setSignup={setSignup} />
-      <Signup view={signup} setSignup={setSignup} setLogin={setLogin}/>
+      <Signup view={signup} setSignup={setSignup} setLogin={setLogin} />
     </div>
   );
 }

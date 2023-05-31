@@ -5,9 +5,8 @@ import Blog from "./Blog";
 import Posts from "./Posts";
 
 export default function Blogs() {
-  const state = useModal();
+  const { login, setLogin, signup, setSignup } = useModal();
 
-  console.log(state);
   return (
     <div className="md:px-[200px] py-10">
       <nav className="hidden md:flex justify-between items-center border-b">
