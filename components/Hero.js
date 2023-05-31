@@ -26,7 +26,14 @@ export default function Hero() {
         142,765 Computer Engineers follow this
       </p>
       <div className="md:hidden">
-        <button className="bg-gradient-to-r from-[#FF5C5C] to-[#F0568A]  fixed bottom-10 right-5 text-white h-[54px] w-[54px] flex justify-center items-center rounded-full">
+        <button
+          onClick={() => {
+            setLogin(true);
+            setSignup(false);
+          }}
+          className="bg-gradient-to-r from-[#FF5C5C] to-[#F0568A]  fixed bottom-10 right-5
+                  text-white h-[54px] w-[54px] flex justify-center items-center rounded-full"
+        >
           <HiOutlinePencil size={20} />
         </button>
       </div>

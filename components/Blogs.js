@@ -27,7 +27,13 @@ export default function Blogs() {
             </span>
           </button>
           {!user.name ? (
-            <button className="flex items-center gap-x-2 font-[500] bg-[#2F6CE5] py-2 text-white rounded px-3">
+            <button
+              className="flex items-center gap-x-2 font-[500] bg-[#2F6CE5] py-2 text-white rounded px-3"
+              onClick={() => {
+                setLogin(true);
+                setSignup(false);
+              }}
+            >
               <AiOutlineUsergroupAdd size={20} />
               <p>Join Group</p>
             </button>
