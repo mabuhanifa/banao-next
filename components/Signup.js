@@ -5,9 +5,19 @@ import { IoMdClose } from "react-icons/io";
 import { IoEyeOutline } from "react-icons/io5";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import signin from "../public/signin.png";
-export default function Signup() {
+export default function Signup({ view, setSignup }) {
+  if (!view) return null;
+  const closeSignup = (e) => {
+    if (e.target.id === "container") {
+      setLogin((m) => !m);
+    }
+  };
   return (
-    <div className="bg-gray-400 flex justify-center md:p-52 ">
+    <div
+      onClick={closeSignup}
+      id="container"
+      className="bg-gray-400 flex justify-center md:p-52 backdrop-blur-sm fixed inset-0 top-40"
+    >
       <div className="w-[736px] h-[530px] bg-white rounded-[8px]">
         <div className="hidden md:flex justify-center bg-[#EFFFF4] py-[17px] px-0 rounded-[8px]">
           <p className="text-[14px] text-[#008A45] font-[500]">
@@ -24,7 +34,10 @@ export default function Signup() {
               <Link href={"login"}>Sign In</Link>
             </button>
           </h4>
-          <button className="md:hidden h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center">
+          <button
+            onClick={() => setSignup(false)}
+            className="md:hidden h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center"
+          >
             <span>
               <IoMdClose />
             </span>

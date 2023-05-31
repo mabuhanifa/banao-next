@@ -6,16 +6,16 @@ import { IoEyeOutline } from "react-icons/io5";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import signin from "../public/signin.png";
 
-export default function Login({ view, setModal }) {
+export default function Login({ view, setLogin }) {
   if (!view) return null;
-  const closeModal = (e) => {
+  const closeLogin = (e) => {
     if (e.target.id === "container") {
-      setModal((m) => !m);
+      setLogin((m) => !m);
     }
   };
   return (
     <div
-      onClick={closeModal}
+      onClick={closeLogin}
       id="container"
       className="bg-gray-400 flex justify-center md:p-52 bg-opacity-30 backdrop-blur-sm fixed inset-0 top-40"
     >
@@ -37,7 +37,7 @@ export default function Login({ view, setModal }) {
           </h4>
           <button
             className="md:hidden h-7 w-7 rounded-full bg-gray-600 text-white flex justify-center items-center"
-            onClick={()=>setModal(false)}
+            onClick={()=>setLogin(false)}
           >
             <span>
               <IoMdClose />
