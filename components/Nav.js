@@ -3,7 +3,7 @@ import Image from "next/image";
 import { AiFillCaretDown } from "react-icons/ai";
 import { MdSearch } from "react-icons/md";
 import icon from "../public/icon.png";
-import user2 from "../public/user2.png";
+import user2 from "../public/user.png";
 
 export default function Nav() {
   const { setLogin, setSignup, user } = useModal();
