@@ -3,6 +3,7 @@ import Image from "next/image";
 import { AiFillCaretDown } from "react-icons/ai";
 import { MdSearch } from "react-icons/md";
 import icon from "../public/icon.png";
+import user2 from "../public/user2.png";
 
 export default function Nav() {
   const { setLogin, setSignup, user } = useModal();
@@ -41,7 +42,7 @@ export default function Nav() {
           </div>
         ) : (
           <div className="flex items-center gap-x-4">
-            <Image src={user} alt="user" width={36} height={36} />
+            <Image src={user2 } alt="user" width={36} height={36} />
             <p>Siddharth Goyal</p>
             <span>
               <AiFillCaretDown />

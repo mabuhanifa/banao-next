@@ -1,4 +1,6 @@
+import { useModal } from "@/contextAPI/context";
 import Image from "next/image";
+import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { IoMdClose } from "react-icons/io";
 import { IoEyeOutline } from "react-icons/io5";
@@ -6,12 +8,22 @@ import { RiFacebookCircleFill } from "react-icons/ri";
 import signin from "../public/signin.png";
 
 export default function Login({ view, setLogin, setSignup }) {
+  const { setUser } = useModal();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const onSubmit = () => {
+    setUser({
+      name: email,
+    });
+    setLogin(false);
+  };
   if (!view) return null;
   const closeLogin = (e) => {
     if (e.target.id === "container") {
       setLogin((m) => !m);
     }
   };
+
   return (
     <div
       onClick={closeLogin}
@@ -66,6 +78,7 @@ export default function Login({ view, setLogin, setSignup }) {
                   type="text"
                   placeholder="Email"
                   className="bg-[#F7F8FA] px-3 py-[11px] border-l border-t border-r w-[320px] placeholder-[#8A8A8A] font-[500]"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="relative">
@@ -73,6 +86,7 @@ export default function Login({ view, setLogin, setSignup }) {
                   type="text"
                   placeholder="Password"
                   className="bg-[#F7F8FA] px-3 py-[11px] border w-[320px] placeholder-[#8A8A8A] font-[500]"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <span className="absolute top-[13px] right-8">
                   <IoEyeOutline className="text-black/[.5]" size={20} />
@@ -80,7 +94,10 @@ export default function Login({ view, setLogin, setSignup }) {
               </div>
             </form>
             <div className="flex items-center justify-between mt-[19px]">
-              <button className="w-[150px] bg-[#2F6CE5] py-3 rounded-full text-white md:w-[320px]  text-[14px]">
+              <button
+                className="w-[150px] bg-[#2F6CE5] py-3 rounded-full text-white md:w-[320px]  text-[14px]"
+                onClick={onSubmit}
+              >
                 Sign In
               </button>
               <button
