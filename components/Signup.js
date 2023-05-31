@@ -81,7 +81,7 @@ export default function Signup({ view, setSignup, setLogin }) {
               </div>
               <div className="relative">
                 <input
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   className="bg-[#F7F8FA] px-3 py-[11px] border w-[320px] placeholder-[#8A8A8A] font-[500]"
                 />
@@ -91,7 +91,7 @@ export default function Signup({ view, setSignup, setLogin }) {
               </div>
               <div>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="Confirm Password"
                   className="bg-[#F7F8FA] px-3 py-[11px] border-l border-r border-b rounded w-[320px] placeholder-[#8A8A8A] font-[500]"
                 />

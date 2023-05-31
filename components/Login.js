@@ -83,7 +83,7 @@ export default function Login({ view, setLogin, setSignup }) {
               </div>
               <div className="relative">
                 <input
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   className="bg-[#F7F8FA] px-3 py-[11px] border w-[320px] placeholder-[#8A8A8A] font-[500]"
                   onChange={(e) => setPassword(e.target.value)}
