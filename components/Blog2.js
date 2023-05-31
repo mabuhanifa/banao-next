@@ -1,11 +1,14 @@
 import Image from "next/image";
+import { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { GiShare } from "react-icons/gi";
 import { IoEyeOutline } from "react-icons/io5";
 import { TfiPencilAlt } from "react-icons/tfi";
 import door from "../public/door.png";
 import user2 from "../public/user2.png";
+import Options from "./Options";
 export default function Blog2() {
+  const [option, setOption] = useState(false);
   return (
     <div className="border rounded my-2">
       <Image src={door} alt="image" />
@@ -16,10 +19,15 @@ export default function Blog2() {
         </div>
         <div className="flex justify-between items-start py-[10px]">
           <h1 className="text-[22px] font-[600]">
-          Tax Benefits for Investment under National Pension <br /> Scheme launched by Government
+            Tax Benefits for Investment under National Pension <br /> Scheme
+            launched by Government
           </h1>
-          <button>
+          <button
+            className={option ? "relative p-2 bg-[#BFC0C0] rounded" : "p-2"}
+            onClick={() => setOption((p) => !p)}
+          >
             <BsThreeDots size={20} />
+            <Options option={option} />
           </button>
         </div>
         <p className="text-[#5C5C5C] text-sm md:text-[19px]">
@@ -49,5 +57,5 @@ export default function Blog2() {
         </div>
       </div>
     </div>
-  )
+  );
 }

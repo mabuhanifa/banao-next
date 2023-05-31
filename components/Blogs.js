@@ -7,7 +7,8 @@ import Blog3 from "./Blog3";
 import Posts from "./Posts";
 
 export default function Blogs() {
-  const { setLogin, setSignup, user ,setUser} = useModal();
+  const { setLogin, setSignup, user, setUser } = useModal();
+  
   return (
     <div className="md:px-[200px] py-10">
       <nav className="hidden md:flex justify-between items-center border-b">
@@ -40,7 +41,7 @@ export default function Blogs() {
           ) : (
             <button
               onClick={() => {
-                setUser({})
+                setUser({});
               }}
               className="flex items-center border gap-x-2 font-[500]  px-3 py-2 rounded text-gray-500"
             >
