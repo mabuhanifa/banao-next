@@ -14,8 +14,8 @@ export default function Topics() {
         />
         <h4> Leisure</h4>
       </div>
-      <button className="bg-[#EDEEF0] text-black px-3 py-1 rounded-[14px] text-[12px]">
-        Follow
+      <button className="bg-black text-white px-3 py-1 rounded-[14px] text-[12px]">
+      Followed
       </button>
     </div>
   );

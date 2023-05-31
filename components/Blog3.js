@@ -32,7 +32,7 @@ export default function Blog3() {
           <div className="flex gap-x-2 items-center">
             <Image src={user3} alt="user" />
             <div>
-              <p className="text-[18px] font-[600]">Sarthak Kamra</p>
+              <p className="text-[18px] font-[600]">Ronal Jones</p>
               <div className="md:hidden flex items-center gap-x-2 text-[14px] text-[#495057] font-[500]">
                 <IoEyeOutline size={16} />
                 <p>1.4k views</p>
