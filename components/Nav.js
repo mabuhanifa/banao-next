@@ -24,7 +24,7 @@ export default function Nav() {
             />
           </div>
         </div>
-        {/* <div>
+        <div>
           <p className="flex items-center gap-2 font-[700]">
             <span>Create account.</span>
             <span className="text-[#2F6CE5] ">It’s free!</span>
@@ -32,7 +32,7 @@ export default function Nav() {
               <AiFillCaretDown />
             </button>
           </p>
-        </div> */}
+        </div>
 
         <div className="flex items-center gap-x-4">
           <Image src={user} alt="user" width={36} height={36} />
