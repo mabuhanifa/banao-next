@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Send, User, Mail, MessageSquare, CheckCircle, AlertCircle } from "lucide-react"
 
 export function ContactForm() {
@@ -14,6 +14,42 @@ export function ContactForm() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+
+  const [visibleContactCards, setVisibleContactCards] = useState<boolean[]>(new Array(3).fill(false))
+  const contactCardRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cardIndex = contactCardRefs.current.findIndex((ref) => ref === entry.target)
+            if (cardIndex !== -1) {
+              setVisibleContactCards((prev) => {
+                const newVisible = [...prev]
+                newVisible[cardIndex] = true
+                return newVisible
+              })
+            }
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      },
+    )
+
+    contactCardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref)
+    })
+
+    return () => {
+      contactCardRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref)
+      })
+    }
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -210,7 +246,8 @@ export function ContactForm() {
               description: "Get in touch via email for detailed discussions",
               action: "info@vynixdigital.com",
               href: "mailto:info@vynixdigital.com",
-              delay: "animate-delay-100",
+              animation: "slide-in-from-left",
+              delay: 0,
             },
             {
               icon: <MessageSquare className="w-6 h-6 text-primary" />,
@@ -218,7 +255,8 @@ export function ContactForm() {
               description: "Chat with our team for quick questions",
               action: "Start Chat",
               href: "#",
-              delay: "animate-delay-200",
+              animation: "slide-in-from-bottom",
+              delay: 200,
             },
             {
               icon: <User className="w-6 h-6 text-primary" />,
@@ -226,12 +264,27 @@ export function ContactForm() {
               description: "Book a consultation with our experts",
               action: "Book Now",
               href: "#",
-              delay: "animate-delay-300",
+              animation: "slide-in-from-right",
+              delay: 400,
             },
           ].map((item, index) => (
             <div
               key={index}
-              className={`group text-center p-6 bg-light-card dark:bg-dark-card rounded-xl border border-light-border dark:border-dark-border hover-lift hover:border-primary/30 transition-all duration-500 animate-fade-in-up ${item.delay} relative overflow-hidden`}
+              ref={(el) => (contactCardRefs.current[index] = el)}
+              className={`group text-center p-6 bg-light-card dark:bg-dark-card rounded-xl border border-light-border dark:border-dark-border hover-lift hover:border-primary/30 transition-all duration-500 relative overflow-hidden opacity-0 transform ${
+                visibleContactCards[index]
+                  ? `${item.animation} opacity-100`
+                  : item.animation === "slide-in-from-left"
+                    ? "translate-x-[-100px]"
+                    : item.animation === "slide-in-from-right"
+                      ? "translate-x-[100px]"
+                      : "translate-y-[100px]"
+              }`}
+              style={{
+                animationDelay: visibleContactCards[index] ? `${item.delay}ms` : "0ms",
+                transitionDelay: visibleContactCards[index] ? `${item.delay}ms` : "0ms",
+                transitionDuration: "800ms",
+              }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-supporting-1/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300 relative z-10">

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import {
   Menu,
   X,
@@ -32,10 +32,105 @@ import { ContactForm } from "@/components/contact-form"
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(new Array(6).fill(false))
+  const servicesRef = useRef<HTMLElement>(null)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  const [visibleProcessCards, setVisibleProcessCards] = useState<boolean[]>(new Array(4).fill(false))
+  const [visiblePricingCards, setVisiblePricingCards] = useState<boolean[]>(new Array(3).fill(false))
+  const [visibleContactCards, setVisibleContactCards] = useState<boolean[]>(new Array(3).fill(false))
+  const [visibleFooterSections, setVisibleFooterSections] = useState<boolean[]>(new Array(4).fill(false))
+  const processCardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const pricingCardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const contactCardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const footerSectionRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Service cards
+            const serviceIndex = cardRefs.current.findIndex((ref) => ref === entry.target)
+            if (serviceIndex !== -1) {
+              setVisibleCards((prev) => {
+                const newVisible = [...prev]
+                newVisible[serviceIndex] = true
+                return newVisible
+              })
+            }
+
+            // Process cards
+            const processIndex = processCardRefs.current.findIndex((ref) => ref === entry.target)
+            if (processIndex !== -1) {
+              setVisibleProcessCards((prev) => {
+                const newVisible = [...prev]
+                newVisible[processIndex] = true
+                return newVisible
+              })
+            }
+
+            // Pricing cards
+            const pricingIndex = pricingCardRefs.current.findIndex((ref) => ref === entry.target)
+            if (pricingIndex !== -1) {
+              setVisiblePricingCards((prev) => {
+                const newVisible = [...prev]
+                newVisible[pricingIndex] = true
+                return newVisible
+              })
+            }
+
+            // Contact cards
+            const contactIndex = contactCardRefs.current.findIndex((ref) => ref === entry.target)
+            if (contactIndex !== -1) {
+              setVisibleContactCards((prev) => {
+                const newVisible = [...prev]
+                newVisible[contactIndex] = true
+                return newVisible
+              })
+            }
+
+            // Footer sections
+            const footerIndex = footerSectionRefs.current.findIndex((ref) => ref === entry.target)
+            if (footerIndex !== -1) {
+              setVisibleFooterSections((prev) => {
+                const newVisible = [...prev]
+                newVisible[footerIndex] = true
+                return newVisible
+              })
+            }
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      },
+    )
+
+    // Observe all elements
+    const allRefs = [
+      ...cardRefs.current,
+      ...processCardRefs.current,
+      ...pricingCardRefs.current,
+      ...contactCardRefs.current,
+      ...footerSectionRefs.current,
+    ]
+
+    allRefs.forEach((ref) => {
+      if (ref) observer.observe(ref)
+    })
+
+    return () => {
+      allRefs.forEach((ref) => {
+        if (ref) observer.unobserve(ref)
+      })
+    }
+  }, [mounted])
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -207,7 +302,11 @@ export default function HomePage() {
       </section>
 
       {/* Enhanced Services Section */}
-      <section className="py-24 bg-light-bg dark:bg-dark-bg relative animate-fade-in-up" id="services">
+      <section
+        ref={servicesRef}
+        className="py-24 bg-light-bg dark:bg-dark-bg relative animate-fade-in-up"
+        id="services"
+      >
         <div className="container max-w-6xl mx-auto px-5">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl mb-4 relative inline-block font-bold after:content-[''] after:absolute after:-bottom-2.5 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-primary text-light-text dark:text-dark-text after:animate-scale-in after:animate-delay-300">
@@ -225,6 +324,8 @@ export default function HomePage() {
                 description:
                   "Custom web applications built with modern frameworks and responsive design principles to deliver exceptional user experiences.",
                 filename: "web-application.js",
+                animation: "slide-in-from-left",
+                delay: 0,
               },
               {
                 icon: <Smartphone className="w-8 h-8" />,
@@ -232,6 +333,8 @@ export default function HomePage() {
                 description:
                   "Native and cross-platform mobile applications that provide seamless experiences across iOS and Android devices.",
                 filename: "mobile-app.swift",
+                animation: "slide-in-from-top",
+                delay: 200,
               },
               {
                 icon: <Code className="w-8 h-8" />,
@@ -239,6 +342,8 @@ export default function HomePage() {
                 description:
                   "Tailored software solutions designed to address your specific business challenges and optimize your operations.",
                 filename: "custom-solution.py",
+                animation: "slide-in-from-right",
+                delay: 400,
               },
               {
                 icon: <Layout className="w-8 h-8" />,
@@ -246,6 +351,8 @@ export default function HomePage() {
                 description:
                   "User-centered design that combines aesthetics with functionality to create intuitive and engaging digital experiences.",
                 filename: "ui-design.sketch",
+                animation: "slide-in-from-bottom",
+                delay: 600,
               },
               {
                 icon: <Cloud className="w-8 h-8" />,
@@ -253,6 +360,8 @@ export default function HomePage() {
                 description:
                   "Scalable and secure cloud infrastructure that enables your business to operate efficiently and adapt to changing demands.",
                 filename: "cloud-config.yaml",
+                animation: "slide-in-from-bottom",
+                delay: 800,
               },
               {
                 icon: <TrendingUp className="w-8 h-8" />,
@@ -260,12 +369,28 @@ export default function HomePage() {
                 description:
                   "Data-driven SEO strategies that improve your online visibility, drive organic traffic, and boost your search engine rankings.",
                 filename: "seo-strategy.json",
+                animation: "slide-in-from-right",
+                delay: 1000,
               },
             ].map((service, index) => (
               <div
                 key={index}
-                className={`group bg-light-card dark:bg-dark-card rounded-xl p-8 transition-all duration-500 border border-light-border dark:border-dark-border relative overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/20 hover:bg-light-card-hover dark:hover:bg-dark-card-hover hover:border-primary/30 animate-fade-in-up flex flex-col`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                ref={(el) => (cardRefs.current[index] = el)}
+                className={`group bg-light-card dark:bg-dark-card rounded-xl p-8 transition-all duration-500 border border-light-border dark:border-dark-border relative overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/20 hover:bg-light-card-hover dark:hover:bg-dark-card-hover hover:border-primary/30 flex flex-col opacity-0 transform ${
+                  visibleCards[index]
+                    ? `${service.animation} opacity-100`
+                    : service.animation === "slide-in-from-left"
+                      ? "translate-x-[-100px]"
+                      : service.animation === "slide-in-from-right"
+                        ? "translate-x-[100px]"
+                        : service.animation === "slide-in-from-top"
+                          ? "translate-y-[-100px]"
+                          : "translate-y-[100px]"
+                }`}
+                style={{
+                  animationDelay: visibleCards[index] ? `${service.delay}ms` : "0ms",
+                  transitionDelay: visibleCards[index] ? `${service.delay}ms` : "0ms",
+                }}
               >
                 {/* Enhanced top bar animation */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-supporting-1 scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100" />
@@ -338,6 +463,8 @@ export default function HomePage() {
                 title: "Discovery",
                 description:
                   "We analyze your requirements and understand your business goals to define the project scope.",
+                animation: "slide-in-from-left",
+                delay: 0,
               },
               {
                 number: 2,
@@ -345,6 +472,8 @@ export default function HomePage() {
                 title: "Planning",
                 description:
                   "We create a detailed roadmap with timelines, milestones, and resource allocation for your project.",
+                animation: "slide-in-from-top",
+                delay: 200,
               },
               {
                 number: 3,
@@ -352,6 +481,8 @@ export default function HomePage() {
                 title: "Development",
                 description:
                   "Our expert team builds your solution using agile methodologies and cutting-edge technologies.",
+                animation: "slide-in-from-top",
+                delay: 400,
               },
               {
                 number: 4,
@@ -359,12 +490,27 @@ export default function HomePage() {
                 title: "Deployment",
                 description:
                   "We launch your solution, provide training, and ensure a smooth transition to the new system.",
+                animation: "slide-in-from-right",
+                delay: 600,
               },
             ].map((step, index) => (
               <div
                 key={index}
-                className={`flex-1 text-center px-5 relative animate-fade-in-up group ${index < 3 ? "md:after:content-[''] md:after:absolute md:after:top-10 md:after:right-[-50px] md:after:w-[100px] md:after:h-0.5 md:after:bg-gradient-to-r md:after:from-primary md:after:to-transparent md:after:animate-pulse-slow" : ""}`}
-                style={{ animationDelay: `${index * 0.2}s` }}
+                ref={(el) => (processCardRefs.current[index] = el)}
+                className={`flex-1 text-center px-5 relative group opacity-0 transform ${
+                  visibleProcessCards[index]
+                    ? `${step.animation} opacity-100`
+                    : step.animation === "slide-in-from-left"
+                      ? "translate-x-[-100px]"
+                      : step.animation === "slide-in-from-right"
+                        ? "translate-x-[100px]"
+                        : "translate-y-[-100px]"
+                } ${index < 3 ? "md:after:content-[''] md:after:absolute md:after:top-10 md:after:right-[-50px] md:after:w-[100px] md:after:h-0.5 md:after:bg-gradient-to-r md:after:from-primary md:after:to-transparent md:after:animate-pulse-slow" : ""}`}
+                style={{
+                  animationDelay: visibleProcessCards[index] ? `${step.delay}ms` : "0ms",
+                  transitionDelay: visibleProcessCards[index] ? `${step.delay}ms` : "0ms",
+                  transitionDuration: "800ms",
+                }}
               >
                 {/* Enhanced number circle */}
                 <div className="w-20 h-20 bg-gradient-to-br from-supporting-1 to-supporting-2 rounded-full flex items-center justify-center mx-auto mb-5 text-3xl font-bold text-white relative shadow-[0_5px_15px_rgba(8,72,67,0.3)] group-hover:scale-110 group-hover:shadow-[0_8px_25px_rgba(8,72,67,0.4)] transition-all duration-500 hover-glow">
@@ -420,6 +566,8 @@ export default function HomePage() {
                   { name: "Advanced integrations", included: false },
                 ],
                 popular: false,
+                animation: "slide-in-from-left",
+                delay: 0,
               },
               {
                 name: "Pro",
@@ -434,6 +582,8 @@ export default function HomePage() {
                   { name: "Enterprise-level integrations", included: false },
                 ],
                 popular: true,
+                animation: "slide-in-from-bottom",
+                delay: 200,
               },
               {
                 name: "Enterprise",
@@ -448,16 +598,31 @@ export default function HomePage() {
                   { name: "Enterprise integrations", included: true },
                 ],
                 popular: false,
+                animation: "slide-in-from-right",
+                delay: 400,
               },
             ].map((plan, index) => (
               <div
                 key={index}
-                className={`group bg-light-card dark:bg-dark-card rounded-xl p-8 flex-1 w-full max-w-sm transition-all duration-500 relative hover:-translate-y-3 hover:shadow-2xl hover:shadow-black/20 animate-fade-in-up ${
+                ref={(el) => (pricingCardRefs.current[index] = el)}
+                className={`group bg-light-card dark:bg-dark-card rounded-xl p-8 flex-1 w-full max-w-sm transition-all duration-500 relative hover:-translate-y-3 hover:shadow-2xl hover:shadow-black/20 opacity-0 transform ${
+                  visiblePricingCards[index]
+                    ? `${plan.animation} opacity-100`
+                    : plan.animation === "slide-in-from-left"
+                      ? "translate-x-[-100px]"
+                      : plan.animation === "slide-in-from-right"
+                        ? "translate-x-[100px]"
+                        : "translate-y-[100px]"
+                } ${
                   plan.popular
                     ? "border-2 border-primary scale-105 hover:scale-110 mt-3"
                     : "border border-light-border dark:border-dark-border hover:border-primary/30"
                 }`}
-                style={{ animationDelay: `${index * 0.2}s` }}
+                style={{
+                  animationDelay: visiblePricingCards[index] ? `${plan.delay}ms` : "0ms",
+                  transitionDelay: visiblePricingCards[index] ? `${plan.delay}ms` : "0ms",
+                  transitionDuration: "800ms",
+                }}
               >
                 {/* Animated background gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-supporting-1/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -544,7 +709,12 @@ export default function HomePage() {
       >
         <div className="container max-w-6xl mx-auto px-5">
           <div className="flex flex-wrap justify-between mb-12 -mx-4">
-            <div className="w-full lg:w-1/3 px-4 mb-10 animate-fade-in-up animate-delay-100">
+            <div
+              className={`w-full lg:w-1/3 px-4 mb-10 opacity-0 transform transition-all duration-800 ${
+                visibleFooterSections[0] ? "slide-in-from-left opacity-100" : "translate-x-[-100px]"
+              }`}
+              ref={(el) => (footerSectionRefs.current[0] = el)}
+            >
               <h3 className="text-lg mb-5 relative pb-2.5 font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-primary text-white dark:text-white after:animate-scale-in">
                 About Vynix
               </h3>
@@ -569,7 +739,12 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            <div className="w-1/2 lg:w-1/6 px-4 mb-10 animate-fade-in-up animate-delay-200">
+            <div
+              className={`w-1/2 lg:w-1/6 px-4 mb-10 opacity-0 transform transition-all duration-800 ${
+                visibleFooterSections[1] ? "slide-in-from-bottom opacity-100" : "translate-y-[100px]"
+              }`}
+              ref={(el) => (footerSectionRefs.current[1] = el)}
+            >
               <h3 className="text-lg mb-5 relative pb-2.5 font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-primary text-white dark:text-white after:animate-scale-in">
                 Quick Links
               </h3>
@@ -587,7 +762,12 @@ export default function HomePage() {
                 ))}
               </ul>
             </div>
-            <div className="w-1/2 lg:w-1/6 px-4 mb-10 animate-fade-in-up animate-delay-300">
+            <div
+              className={`w-1/2 lg:w-1/6 px-4 mb-10 opacity-0 transform transition-all duration-800 ${
+                visibleFooterSections[2] ? "slide-in-from-bottom opacity-100" : "translate-y-[100px]"
+              }`}
+              ref={(el) => (footerSectionRefs.current[2] = el)}
+            >
               <h3 className="text-lg mb-5 relative pb-2.5 font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-primary text-white dark:text-white after:animate-scale-in">
                 Services
               </h3>
@@ -607,7 +787,12 @@ export default function HomePage() {
                 )}
               </ul>
             </div>
-            <div className="w-full lg:w-1/3 px-4 mb-10 animate-fade-in-up animate-delay-400">
+            <div
+              className={`w-full lg:w-1/3 px-4 mb-10 opacity-0 transform transition-all duration-800 ${
+                visibleFooterSections[3] ? "slide-in-from-right opacity-100" : "translate-x-[100px]"
+              }`}
+              ref={(el) => (footerSectionRefs.current[3] = el)}
+            >
               <h3 className="text-lg mb-5 relative pb-2.5 font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-primary text-white dark:text-white after:animate-scale-in">
                 Contact Us
               </h3>
