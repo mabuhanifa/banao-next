@@ -32,6 +32,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [visibleCards, setVisibleCards] = useState<boolean[]>(
     new Array(6).fill(false)
   );
@@ -57,7 +58,34 @@ export default function HomePage() {
 
   useEffect(() => {
     setMounted(true);
+    if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      setIsDark(savedTheme === "dark" || (!savedTheme && prefersDark));
+    }
   }, []);
+
+  // Listen for theme changes
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === "class") {
+            setIsDark(document.documentElement.classList.contains("dark"));
+          }
+        });
+      });
+
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+
+      return () => observer.disconnect();
+    }
+  }, [mounted]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -174,12 +202,23 @@ export default function HomePage() {
       <header className="bg-light-bg/95 dark:bg-dark-bg/95 sticky top-0 z-50 py-5 border-b border-supporting-1/30 backdrop-blur-md transition-all duration-300 animate-slide-down">
         <div className="container max-w-6xl mx-auto px-5 flex justify-between items-center">
           <div className="flex items-center animate-fade-in-left">
-            <img
-              src="logoDark.svg"
-              alt="Vynix Digital Logo"
-              className="w-12 h-12 rounded-full mr-3"
-            />
-            <h1 className="text-[28px] font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent ml-2.5 hover:scale-105 transition-transform duration-300">
+            {/* Theme-based Logo */}
+            <div className="w-10 h-10 flex items-center justify-center mr-2.5 transition-all duration-300 hover:scale-110 hover:rotate-12">
+              {isDark ? (
+                <img
+                  src="/logoDark.svg"
+                  alt="Vynix Digital Logo"
+                  className="w-full h-full object-contain transition-all duration-300"
+                />
+              ) : (
+                <img
+                  src="/logoLight.svg"
+                  alt="Vynix Digital Logo"
+                  className="w-full h-full object-contain transition-all duration-300"
+                />
+              )}
+            </div>
+            <h1 className="text-[28px] font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
               Vynix Digital
             </h1>
           </div>
