@@ -1,53 +1,63 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
 import {
-  Menu,
-  X,
-  Code,
-  Smartphone,
-  Layout,
-  Cloud,
-  TrendingUp,
-  MessageSquare,
-  Rocket,
-  FileText,
-  CheckCircle,
   ArrowRight,
-  Send,
-  Heart,
-  MapPin,
-  Phone,
-  Mail,
+  CheckCircle,
+  Cloud,
+  Code,
   Facebook,
-  Twitter,
-  Linkedin,
+  FileText,
+  Heart,
   Instagram,
-} from "lucide-react"
+  Layout,
+  Linkedin,
+  Mail,
+  MapPin,
+  Menu,
+  MessageSquare,
+  Phone,
+  Rocket,
+  Send,
+  Smartphone,
+  TrendingUp,
+  Twitter,
+  X,
+} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
-import { ThemeToggle } from "@/components/theme-toggle"
-import { TestimonialsCarousel } from "@/components/testimonials-carousel"
-import { ContactForm } from "@/components/contact-form"
+import { ContactForm } from "@/components/contact-form";
+import { TestimonialsCarousel } from "@/components/testimonials-carousel";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function HomePage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
-  const [visibleCards, setVisibleCards] = useState<boolean[]>(new Array(6).fill(false))
-  const servicesRef = useRef<HTMLElement>(null)
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(
+    new Array(6).fill(false)
+  );
+  const servicesRef = useRef<HTMLElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const [visibleProcessCards, setVisibleProcessCards] = useState<boolean[]>(new Array(4).fill(false))
-  const [visiblePricingCards, setVisiblePricingCards] = useState<boolean[]>(new Array(3).fill(false))
-  const [visibleContactCards, setVisibleContactCards] = useState<boolean[]>(new Array(3).fill(false))
-  const [visibleFooterSections, setVisibleFooterSections] = useState<boolean[]>(new Array(4).fill(false))
-  const processCardRefs = useRef<(HTMLDivElement | null)[]>([])
-  const pricingCardRefs = useRef<(HTMLDivElement | null)[]>([])
-  const contactCardRefs = useRef<(HTMLDivElement | null)[]>([])
-  const footerSectionRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [visibleProcessCards, setVisibleProcessCards] = useState<boolean[]>(
+    new Array(4).fill(false)
+  );
+  const [visiblePricingCards, setVisiblePricingCards] = useState<boolean[]>(
+    new Array(3).fill(false)
+  );
+  const [visibleContactCards, setVisibleContactCards] = useState<boolean[]>(
+    new Array(3).fill(false)
+  );
+  const [visibleFooterSections, setVisibleFooterSections] = useState<boolean[]>(
+    new Array(4).fill(false)
+  );
+  const processCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const pricingCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const contactCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const footerSectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,62 +65,72 @@ export default function HomePage() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             // Service cards
-            const serviceIndex = cardRefs.current.findIndex((ref) => ref === entry.target)
+            const serviceIndex = cardRefs.current.findIndex(
+              (ref) => ref === entry.target
+            );
             if (serviceIndex !== -1) {
               setVisibleCards((prev) => {
-                const newVisible = [...prev]
-                newVisible[serviceIndex] = true
-                return newVisible
-              })
+                const newVisible = [...prev];
+                newVisible[serviceIndex] = true;
+                return newVisible;
+              });
             }
 
             // Process cards
-            const processIndex = processCardRefs.current.findIndex((ref) => ref === entry.target)
+            const processIndex = processCardRefs.current.findIndex(
+              (ref) => ref === entry.target
+            );
             if (processIndex !== -1) {
               setVisibleProcessCards((prev) => {
-                const newVisible = [...prev]
-                newVisible[processIndex] = true
-                return newVisible
-              })
+                const newVisible = [...prev];
+                newVisible[processIndex] = true;
+                return newVisible;
+              });
             }
 
             // Pricing cards
-            const pricingIndex = pricingCardRefs.current.findIndex((ref) => ref === entry.target)
+            const pricingIndex = pricingCardRefs.current.findIndex(
+              (ref) => ref === entry.target
+            );
             if (pricingIndex !== -1) {
               setVisiblePricingCards((prev) => {
-                const newVisible = [...prev]
-                newVisible[pricingIndex] = true
-                return newVisible
-              })
+                const newVisible = [...prev];
+                newVisible[pricingIndex] = true;
+                return newVisible;
+              });
             }
 
             // Contact cards
-            const contactIndex = contactCardRefs.current.findIndex((ref) => ref === entry.target)
+            const contactIndex = contactCardRefs.current.findIndex(
+              (ref) => ref === entry.target
+            );
             if (contactIndex !== -1) {
               setVisibleContactCards((prev) => {
-                const newVisible = [...prev]
-                newVisible[contactIndex] = true
-                return newVisible
-              })
+                const newVisible = [...prev];
+                newVisible[contactIndex] = true;
+                return newVisible;
+              });
             }
 
             // Footer sections
-            const footerIndex = footerSectionRefs.current.findIndex((ref) => ref === entry.target)
+            const footerIndex = footerSectionRefs.current.findIndex(
+              (ref) => ref === entry.target
+            );
             if (footerIndex !== -1) {
               setVisibleFooterSections((prev) => {
-                const newVisible = [...prev]
-                newVisible[footerIndex] = true
-                return newVisible
-              })
+                const newVisible = [...prev];
+                newVisible[footerIndex] = true;
+                return newVisible;
+              });
             }
           }
-        })
+        });
       },
       {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px",
-      },
-    )
+      }
+    );
 
     // Observe all elements
     const allRefs = [
@@ -119,22 +139,22 @@ export default function HomePage() {
       ...pricingCardRefs.current,
       ...contactCardRefs.current,
       ...footerSectionRefs.current,
-    ]
+    ];
 
     allRefs.forEach((ref) => {
-      if (ref) observer.observe(ref)
-    })
+      if (ref) observer.observe(ref);
+    });
 
     return () => {
       allRefs.forEach((ref) => {
-        if (ref) observer.unobserve(ref)
-      })
-    }
-  }, [mounted])
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, [mounted]);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   // Prevent hydration issues by ensuring component is mounted
   if (!mounted) {
@@ -145,7 +165,7 @@ export default function HomePage() {
           <div className="text-primary">Loading...</div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -154,9 +174,11 @@ export default function HomePage() {
       <header className="bg-light-bg/95 dark:bg-dark-bg/95 sticky top-0 z-50 py-5 border-b border-supporting-1/30 backdrop-blur-md transition-all duration-300 animate-slide-down">
         <div className="container max-w-6xl mx-auto px-5 flex justify-between items-center">
           <div className="flex items-center animate-fade-in-left">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-supporting-1 rounded-lg flex items-center justify-center text-white text-xl shadow-[0_0_15px_rgba(18,165,148,0.4)] hover:scale-110 transition-all duration-300 hover:rotate-12">
-              <Code className="w-5 h-5 transition-transform duration-300" />
-            </div>
+            <img
+              src="logoDark.svg"
+              alt="Vynix Digital Logo"
+              className="w-12 h-12 rounded-full mr-3"
+            />
             <h1 className="text-[28px] font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent ml-2.5 hover:scale-105 transition-transform duration-300">
               Vynix Digital
             </h1>
@@ -165,8 +187,19 @@ export default function HomePage() {
           {/* Enhanced Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8 animate-fade-in-right">
             <ul className="flex list-none gap-8">
-              {["Home", "Services", "Process", "Pricing", "Testimonials", "Contact"].map((item, index) => (
-                <li key={item} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+              {[
+                "Home",
+                "Services",
+                "Process",
+                "Pricing",
+                "Testimonials",
+                "Contact",
+              ].map((item, index) => (
+                <li
+                  key={item}
+                  className="animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <a
                     href={`#${item.toLowerCase()}`}
                     className="text-light-text dark:text-dark-text no-underline font-medium text-base transition-all duration-300 relative hover:text-primary hover:scale-105 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
@@ -187,7 +220,11 @@ export default function HomePage() {
               className="w-10 h-10 flex items-center justify-center text-light-text dark:text-dark-text hover:text-primary transition-all duration-300 hover:scale-110 hover:rotate-90"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
 
@@ -196,8 +233,19 @@ export default function HomePage() {
             <div className="md:hidden absolute top-full left-0 right-0 bg-light-bg/95 dark:bg-dark-bg/95 backdrop-blur-md border-t border-supporting-1/30 shadow-lg z-40">
               <nav className="container max-w-6xl mx-auto px-5 py-4">
                 <ul className="flex flex-col gap-4">
-                  {["Home", "Services", "Process", "Pricing", "Testimonials", "Contact"].map((item, index) => (
-                    <li key={item} className="animate-fade-in-left" style={{ animationDelay: `${index * 0.1}s` }}>
+                  {[
+                    "Home",
+                    "Services",
+                    "Process",
+                    "Pricing",
+                    "Testimonials",
+                    "Contact",
+                  ].map((item, index) => (
+                    <li
+                      key={item}
+                      className="animate-fade-in-left"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
                       <a
                         href={`#${item.toLowerCase()}`}
                         onClick={() => setIsMenuOpen(false)}
@@ -229,8 +277,9 @@ export default function HomePage() {
               For Your Business
             </h2>
             <p className="text-lg text-light-text-muted dark:text-dark-text-muted mb-8 max-w-lg mx-auto md:mx-0 animate-fade-in-up animate-delay-200">
-              We build cutting-edge software solutions that transform businesses and drive innovation. Our team of
-              experts delivers custom applications tailored to your unique needs.
+              We build cutting-edge software solutions that transform businesses
+              and drive innovation. Our team of experts delivers custom
+              applications tailored to your unique needs.
             </p>
             <a
               href="#contact"
@@ -251,7 +300,10 @@ export default function HomePage() {
               ></div>
               <div
                 className="absolute rounded-full border-2 border-primary/30 shadow-[0_0_30px_rgba(18,165,148,0.1)] w-[140px] h-[140px] md:w-[170px] md:h-[170px] lg:w-[200px] lg:h-[200px] animate-spin hover-glow"
-                style={{ animationDuration: "15s", animationDirection: "reverse" }}
+                style={{
+                  animationDuration: "15s",
+                  animationDirection: "reverse",
+                }}
               ></div>
               <div
                 className="absolute rounded-full border-2 border-primary/30 shadow-[0_0_30px_rgba(18,165,148,0.1)] w-[260px] h-[260px] md:w-[330px] md:h-[330px] lg:w-[400px] lg:h-[400px] border-dashed animate-spin hover-glow"
@@ -275,25 +327,54 @@ export default function HomePage() {
               {/* Enhanced gradient lines */}
               <div
                 className="absolute bg-gradient-to-r from-transparent via-primary to-transparent h-px animate-pulse-slow"
-                style={{ top: "30%", left: "20%", width: "60%", transform: "rotate(30deg)" }}
+                style={{
+                  top: "30%",
+                  left: "20%",
+                  width: "60%",
+                  transform: "rotate(30deg)",
+                }}
               ></div>
               <div
                 className="absolute bg-gradient-to-r from-transparent via-primary to-transparent h-px animate-pulse-slow"
-                style={{ top: "60%", left: "10%", width: "80%", transform: "rotate(-20deg)", animationDelay: "1s" }}
+                style={{
+                  top: "60%",
+                  left: "10%",
+                  width: "80%",
+                  transform: "rotate(-20deg)",
+                  animationDelay: "1s",
+                }}
               ></div>
 
               {/* Enhanced floating icons */}
               {[
-                { icon: <Code className="w-4 h-4 md:w-6 md:h-6" />, pos: { top: "20%", left: "50%" }, delay: "4s" },
-                { icon: <FileText className="w-4 h-4 md:w-6 md:h-6" />, pos: { top: "60%", left: "30%" }, delay: "5s" },
-                { icon: <Cloud className="w-4 h-4 md:w-6 md:h-6" />, pos: { top: "40%", left: "70%" }, delay: "4.5s" },
+                {
+                  icon: <Code className="w-4 h-4 md:w-6 md:h-6" />,
+                  pos: { top: "20%", left: "50%" },
+                  delay: "4s",
+                },
+                {
+                  icon: <FileText className="w-4 h-4 md:w-6 md:h-6" />,
+                  pos: { top: "60%", left: "30%" },
+                  delay: "5s",
+                },
+                {
+                  icon: <Cloud className="w-4 h-4 md:w-6 md:h-6" />,
+                  pos: { top: "40%", left: "70%" },
+                  delay: "4.5s",
+                },
               ].map((item, index) => (
                 <div
                   key={index}
                   className="absolute w-[35px] h-[35px] md:w-[45px] md:h-[45px] lg:w-[50px] lg:h-[50px] flex items-center justify-center bg-light-card dark:bg-dark-card rounded-xl shadow-lg shadow-black/30 text-primary text-lg md:text-2xl animate-bounce hover-lift hover:rotate-12 transition-all duration-300 group"
-                  style={{ ...item.pos, animationDuration: item.delay, animationDelay: `${index * 0.5}s` }}
+                  style={{
+                    ...item.pos,
+                    animationDuration: item.delay,
+                    animationDelay: `${index * 0.5}s`,
+                  }}
                 >
-                  <div className="group-hover:scale-125 transition-transform duration-300">{item.icon}</div>
+                  <div className="group-hover:scale-125 transition-transform duration-300">
+                    {item.icon}
+                  </div>
                 </div>
               ))}
             </div>
@@ -313,7 +394,8 @@ export default function HomePage() {
               Our Services
             </h2>
             <p className="text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
-              We offer a comprehensive range of digital solutions to help your business thrive in the digital landscape.
+              We offer a comprehensive range of digital solutions to help your
+              business thrive in the digital landscape.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -380,16 +462,20 @@ export default function HomePage() {
                   visibleCards[index]
                     ? `${service.animation} opacity-100`
                     : service.animation === "slide-in-from-left"
-                      ? "translate-x-[-100px]"
-                      : service.animation === "slide-in-from-right"
-                        ? "translate-x-[100px]"
-                        : service.animation === "slide-in-from-top"
-                          ? "translate-y-[-100px]"
-                          : "translate-y-[100px]"
+                    ? "translate-x-[-100px]"
+                    : service.animation === "slide-in-from-right"
+                    ? "translate-x-[100px]"
+                    : service.animation === "slide-in-from-top"
+                    ? "translate-y-[-100px]"
+                    : "translate-y-[100px]"
                 }`}
                 style={{
-                  animationDelay: visibleCards[index] ? `${service.delay}ms` : "0ms",
-                  transitionDelay: visibleCards[index] ? `${service.delay}ms` : "0ms",
+                  animationDelay: visibleCards[index]
+                    ? `${service.delay}ms`
+                    : "0ms",
+                  transitionDelay: visibleCards[index]
+                    ? `${service.delay}ms`
+                    : "0ms",
                 }}
               >
                 {/* Enhanced top bar animation */}
@@ -416,7 +502,9 @@ export default function HomePage() {
 
                 {/* Enhanced icon with multiple animations */}
                 <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-5 text-primary text-3xl relative z-10 group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 hover-glow">
-                  <div className="group-hover:scale-125 transition-transform duration-300">{service.icon}</div>
+                  <div className="group-hover:scale-125 transition-transform duration-300">
+                    {service.icon}
+                  </div>
                 </div>
 
                 <h3 className="text-2xl mb-4 text-light-text dark:text-dark-text font-medium relative z-10 group-hover:text-primary transition-colors duration-300">
@@ -452,7 +540,8 @@ export default function HomePage() {
               Our Development Process
             </h2>
             <p className="text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
-              We follow a structured approach to deliver high-quality solutions that meet your business objectives.
+              We follow a structured approach to deliver high-quality solutions
+              that meet your business objectives.
             </p>
           </div>
           <div className="flex flex-col md:flex-row justify-between relative z-10 gap-y-12 md:gap-y-0">
@@ -501,14 +590,22 @@ export default function HomePage() {
                   visibleProcessCards[index]
                     ? `${step.animation} opacity-100`
                     : step.animation === "slide-in-from-left"
-                      ? "translate-x-[-100px]"
-                      : step.animation === "slide-in-from-right"
-                        ? "translate-x-[100px]"
-                        : "translate-y-[-100px]"
-                } ${index < 3 ? "md:after:content-[''] md:after:absolute md:after:top-10 md:after:right-[-50px] md:after:w-[100px] md:after:h-0.5 md:after:bg-gradient-to-r md:after:from-primary md:after:to-transparent md:after:animate-pulse-slow" : ""}`}
+                    ? "translate-x-[-100px]"
+                    : step.animation === "slide-in-from-right"
+                    ? "translate-x-[100px]"
+                    : "translate-y-[-100px]"
+                } ${
+                  index < 3
+                    ? "md:after:content-[''] md:after:absolute md:after:top-10 md:after:right-[-50px] md:after:w-[100px] md:after:h-0.5 md:after:bg-gradient-to-r md:after:from-primary md:after:to-transparent md:after:animate-pulse-slow"
+                    : ""
+                }`}
                 style={{
-                  animationDelay: visibleProcessCards[index] ? `${step.delay}ms` : "0ms",
-                  transitionDelay: visibleProcessCards[index] ? `${step.delay}ms` : "0ms",
+                  animationDelay: visibleProcessCards[index]
+                    ? `${step.delay}ms`
+                    : "0ms",
+                  transitionDelay: visibleProcessCards[index]
+                    ? `${step.delay}ms`
+                    : "0ms",
                   transitionDuration: "800ms",
                 }}
               >
@@ -541,7 +638,10 @@ export default function HomePage() {
       </section>
 
       {/* Enhanced Pricing Section */}
-      <section className="py-24 bg-light-bg dark:bg-dark-bg animate-fade-in-up" id="pricing">
+      <section
+        className="py-24 bg-light-bg dark:bg-dark-bg animate-fade-in-up"
+        id="pricing"
+      >
         <div className="container max-w-6xl mx-auto px-5">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl mb-4 relative inline-block font-bold after:content-[''] after:absolute after:-bottom-2.5 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-primary after:animate-scale-in after:animate-delay-300">
@@ -575,7 +675,10 @@ export default function HomePage() {
                 description: "Ideal for growing businesses",
                 features: [
                   { name: "Advanced website/app development", included: true },
-                  { name: "Responsive design across all devices", included: true },
+                  {
+                    name: "Responsive design across all devices",
+                    included: true,
+                  },
                   { name: "Advanced CMS with custom fields", included: true },
                   { name: "Comprehensive SEO package", included: true },
                   { name: "Custom functionality", included: true },
@@ -609,18 +712,22 @@ export default function HomePage() {
                   visiblePricingCards[index]
                     ? `${plan.animation} opacity-100`
                     : plan.animation === "slide-in-from-left"
-                      ? "translate-x-[-100px]"
-                      : plan.animation === "slide-in-from-right"
-                        ? "translate-x-[100px]"
-                        : "translate-y-[100px]"
+                    ? "translate-x-[-100px]"
+                    : plan.animation === "slide-in-from-right"
+                    ? "translate-x-[100px]"
+                    : "translate-y-[100px]"
                 } ${
                   plan.popular
                     ? "border-2 border-primary scale-105 hover:scale-110 mt-3"
                     : "border border-light-border dark:border-dark-border hover:border-primary/30"
                 }`}
                 style={{
-                  animationDelay: visiblePricingCards[index] ? `${plan.delay}ms` : "0ms",
-                  transitionDelay: visiblePricingCards[index] ? `${plan.delay}ms` : "0ms",
+                  animationDelay: visiblePricingCards[index]
+                    ? `${plan.delay}ms`
+                    : "0ms",
+                  transitionDelay: visiblePricingCards[index]
+                    ? `${plan.delay}ms`
+                    : "0ms",
                   transitionDuration: "800ms",
                 }}
               >
@@ -642,7 +749,9 @@ export default function HomePage() {
                       /project
                     </span>
                   </div>
-                  <p className="text-light-text-muted dark:text-dark-text-muted text-sm">{plan.description}</p>
+                  <p className="text-light-text-muted dark:text-dark-text-muted text-sm">
+                    {plan.description}
+                  </p>
                 </div>
                 <div className="mb-8 space-y-4 relative z-10">
                   {plan.features.map((feature, featureIndex) => (
@@ -652,12 +761,24 @@ export default function HomePage() {
                       style={{ animationDelay: `${featureIndex * 0.1}s` }}
                     >
                       <div
-                        className={`mr-2.5 text-lg transition-all duration-300 ${feature.included ? "text-primary group-hover:scale-110" : "text-light-text-muted dark:text-dark-text-muted"}`}
+                        className={`mr-2.5 text-lg transition-all duration-300 ${
+                          feature.included
+                            ? "text-primary group-hover:scale-110"
+                            : "text-light-text-muted dark:text-dark-text-muted"
+                        }`}
                       >
-                        {feature.included ? <CheckCircle className="w-5 h-5" /> : <X className="w-5 h-5" />}
+                        {feature.included ? (
+                          <CheckCircle className="w-5 h-5" />
+                        ) : (
+                          <X className="w-5 h-5" />
+                        )}
                       </div>
                       <div
-                        className={`text-base transition-colors duration-300 ${feature.included ? "group-hover:text-light-text dark:group-hover:text-dark-text" : "text-light-text-muted dark:text-dark-text-muted"}`}
+                        className={`text-base transition-colors duration-300 ${
+                          feature.included
+                            ? "group-hover:text-light-text dark:group-hover:text-dark-text"
+                            : "text-light-text-muted dark:text-dark-text-muted"
+                        }`}
                       >
                         {feature.name}
                       </div>
@@ -711,7 +832,9 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-between mb-12 -mx-4">
             <div
               className={`w-full lg:w-1/3 px-4 mb-10 opacity-0 transform transition-all duration-800 ${
-                visibleFooterSections[0] ? "slide-in-from-left opacity-100" : "translate-x-[-100px]"
+                visibleFooterSections[0]
+                  ? "slide-in-from-left opacity-100"
+                  : "translate-x-[-100px]"
               }`}
               ref={(el) => (footerSectionRefs.current[0] = el)}
             >
@@ -719,8 +842,9 @@ export default function HomePage() {
                 About Vynix
               </h3>
               <p className="text-gray-300 dark:text-dark-text-muted mb-5 text-sm">
-                Vynix Digital is a leading software development agency specializing in creating innovative digital
-                solutions that help businesses thrive in the digital age.
+                Vynix Digital is a leading software development agency
+                specializing in creating innovative digital solutions that help
+                businesses thrive in the digital age.
               </p>
               <div className="flex gap-x-4">
                 {[
@@ -741,7 +865,9 @@ export default function HomePage() {
             </div>
             <div
               className={`w-1/2 lg:w-1/6 px-4 mb-10 opacity-0 transform transition-all duration-800 ${
-                visibleFooterSections[1] ? "slide-in-from-bottom opacity-100" : "translate-y-[100px]"
+                visibleFooterSections[1]
+                  ? "slide-in-from-bottom opacity-100"
+                  : "translate-y-[100px]"
               }`}
               ref={(el) => (footerSectionRefs.current[1] = el)}
             >
@@ -749,22 +875,30 @@ export default function HomePage() {
                 Quick Links
               </h3>
               <ul className="list-none space-y-3">
-                {["Home", "Services", "Process", "Pricing", "Testimonials"].map((link, index) => (
-                  <li key={link} className="animate-fade-in-left" style={{ animationDelay: `${index * 0.1}s` }}>
-                    <a
-                      href={`#${link.toLowerCase()}`}
-                      className="text-gray-300 dark:text-dark-text-muted no-underline text-sm transition-all duration-300 flex items-center hover:text-primary hover:translate-x-2"
+                {["Home", "Services", "Process", "Pricing", "Testimonials"].map(
+                  (link, index) => (
+                    <li
+                      key={link}
+                      className="animate-fade-in-left"
+                      style={{ animationDelay: `${index * 0.1}s` }}
                     >
-                      <ArrowRight className="w-3 h-3 mr-2 transition-transform duration-300" />
-                      {link}
-                    </a>
-                  </li>
-                ))}
+                      <a
+                        href={`#${link.toLowerCase()}`}
+                        className="text-gray-300 dark:text-dark-text-muted no-underline text-sm transition-all duration-300 flex items-center hover:text-primary hover:translate-x-2"
+                      >
+                        <ArrowRight className="w-3 h-3 mr-2 transition-transform duration-300" />
+                        {link}
+                      </a>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
             <div
               className={`w-1/2 lg:w-1/6 px-4 mb-10 opacity-0 transform transition-all duration-800 ${
-                visibleFooterSections[2] ? "slide-in-from-bottom opacity-100" : "translate-y-[100px]"
+                visibleFooterSections[2]
+                  ? "slide-in-from-bottom opacity-100"
+                  : "translate-y-[100px]"
               }`}
               ref={(el) => (footerSectionRefs.current[2] = el)}
             >
@@ -772,24 +906,34 @@ export default function HomePage() {
                 Services
               </h3>
               <ul className="list-none space-y-3">
-                {["Web Application", "Mobile App", "Custom Software", "UI/UX Design", "Cloud Solutions"].map(
-                  (service, index) => (
-                    <li key={service} className="animate-fade-in-left" style={{ animationDelay: `${index * 0.1}s` }}>
-                      <a
-                        href="#"
-                        className="text-gray-300 dark:text-dark-text-muted no-underline text-sm transition-all duration-300 flex items-center hover:text-primary hover:translate-x-2"
-                      >
-                        <ArrowRight className="w-3 h-3 mr-2 transition-transform duration-300" />
-                        {service}
-                      </a>
-                    </li>
-                  ),
-                )}
+                {[
+                  "Web Application",
+                  "Mobile App",
+                  "Custom Software",
+                  "UI/UX Design",
+                  "Cloud Solutions",
+                ].map((service, index) => (
+                  <li
+                    key={service}
+                    className="animate-fade-in-left"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <a
+                      href="#"
+                      className="text-gray-300 dark:text-dark-text-muted no-underline text-sm transition-all duration-300 flex items-center hover:text-primary hover:translate-x-2"
+                    >
+                      <ArrowRight className="w-3 h-3 mr-2 transition-transform duration-300" />
+                      {service}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
             <div
               className={`w-full lg:w-1/3 px-4 mb-10 opacity-0 transform transition-all duration-800 ${
-                visibleFooterSections[3] ? "slide-in-from-right opacity-100" : "translate-x-[100px]"
+                visibleFooterSections[3]
+                  ? "slide-in-from-right opacity-100"
+                  : "translate-x-[100px]"
               }`}
               ref={(el) => (footerSectionRefs.current[3] = el)}
             >
@@ -809,17 +953,23 @@ export default function HomePage() {
                   <div className="text-primary mr-2.5 text-lg mt-0.5">
                     <Phone className="w-5 h-5" />
                   </div>
-                  <div className="text-gray-300 dark:text-dark-text-muted text-sm">+1 (555) 123-4567</div>
+                  <div className="text-gray-300 dark:text-dark-text-muted text-sm">
+                    +1 (555) 123-4567
+                  </div>
                 </div>
                 <div className="flex items-start animate-fade-in-left animate-delay-300">
                   <div className="text-primary mr-2.5 text-lg mt-0.5">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <div className="text-gray-300 dark:text-dark-text-muted text-sm">info@vynixdigital.com</div>
+                  <div className="text-gray-300 dark:text-dark-text-muted text-sm">
+                    info@vynixdigital.com
+                  </div>
                 </div>
               </div>
               <div className="mt-5 animate-fade-in-up animate-delay-500">
-                <h4 className="font-medium text-base text-white dark:text-white">Subscribe to our newsletter</h4>
+                <h4 className="font-medium text-base text-white dark:text-white">
+                  Subscribe to our newsletter
+                </h4>
                 <form className="flex mt-3 group">
                   <input
                     type="email"
@@ -839,14 +989,14 @@ export default function HomePage() {
           <div className="text-center pt-8 border-t border-border-color text-gray-300 dark:text-dark-text-muted text-sm animate-fade-in-up animate-delay-600">
             <p className="flex items-center justify-center gap-2">
               © 2023 Vynix Digital. All rights reserved. | Designed with{" "}
-              <Heart className="w-4 h-4 text-primary inline-block align-middle fill-current animate-pulse" /> by Vynix
-              Team
+              <Heart className="w-4 h-4 text-primary inline-block align-middle fill-current animate-pulse" />{" "}
+              by Vynix Team
             </p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
 // MessageSquote component for testimonials quote icon
@@ -855,5 +1005,5 @@ function MessageSquote({ className }: { className?: string }) {
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
       <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
     </svg>
-  )
+  );
 }
